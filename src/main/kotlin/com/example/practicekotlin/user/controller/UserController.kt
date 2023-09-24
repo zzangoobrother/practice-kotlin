@@ -1,6 +1,6 @@
 package com.example.practicekotlin.user.controller
 
-import com.example.practicekotlin.user.controller.dto.SignupRequest
+import com.example.practicekotlin.user.dto.SignupRequest
 import com.example.practicekotlin.user.service.UserService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.PostMapping

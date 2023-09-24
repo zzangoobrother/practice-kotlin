@@ -1,4 +1,4 @@
-package com.example.practicekotlin.user.controller.dto
+package com.example.practicekotlin.user.dto
 
 data class SignupRequest(
     val loginId: String,
