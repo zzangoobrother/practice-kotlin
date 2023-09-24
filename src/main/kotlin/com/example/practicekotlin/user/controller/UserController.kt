@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
+import javax.validation.Valid
 
 @RestController
 class UserController(
@@ -15,7 +16,7 @@ class UserController(
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
-    fun signup(@RequestBody request: SignupRequest) {
+    fun signup(@Valid @RequestBody request: SignupRequest) {
         userService.signup(request)
     }
 }

@@ -44,4 +44,42 @@ class UserControllerTest {
                 status { isCreated() }
             }
     }
+
+    @Test
+    fun `회원가입 중 id를 입력하지 않으면 에러`() {
+        val request = SignupRequest(
+            loginId = "",
+            password = "1234"
+        )
+
+        every { userService.signup(request) } just Runs
+
+        mockMvc.post("/signup") {
+            content = objectMapper.writeValueAsString(request)
+            contentType = MediaType.APPLICATION_JSON
+        }
+            .andDo { print() }
+            .andExpect {
+                status { isBadRequest() }
+            }
+    }
+
+    @Test
+    fun `회원가입 중 비밀번호를 입력하지 않으면 에러`() {
+        val request = SignupRequest(
+            loginId = "abcd",
+            password = ""
+        )
+
+        every { userService.signup(request) } just Runs
+
+        mockMvc.post("/signup") {
+            content = objectMapper.writeValueAsString(request)
+            contentType = MediaType.APPLICATION_JSON
+        }
+            .andDo { print() }
+            .andExpect {
+                status { isBadRequest() }
+            }
+    }
 }

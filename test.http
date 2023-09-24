@@ -1,0 +1,12 @@
+### 회원가입
+POST http://localhost:8080/signup
+Content-Type: application/json
+
+{
+  "loginId": "abcd",
+  "password": "1234"
+}
+
+### 회원조회
+GET http://localhost:8080/users
+Content-Type: application/json
