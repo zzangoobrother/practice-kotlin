@@ -28,6 +28,8 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+    testImplementation 'io.rest-assured:rest-assured'
+
     // https://mvnrepository.com/artifact/io.mockk/mockk
     testImplementation group: 'io.mockk', name: 'mockk', version: '1.12.4'
 
