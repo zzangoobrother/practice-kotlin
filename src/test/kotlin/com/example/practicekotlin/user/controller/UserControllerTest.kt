@@ -1,5 +1,6 @@
 package com.example.practicekotlin.user.controller
 
+import com.example.practicekotlin.user.dto.LoginRequest
 import com.example.practicekotlin.user.dto.SignupRequest
 import com.example.practicekotlin.user.service.UserService
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -80,6 +81,25 @@ class UserControllerTest {
             .andDo { print() }
             .andExpect {
                 status { isBadRequest() }
+            }
+    }
+
+    @Test
+    fun `로그인을 한다`() {
+        val request = LoginRequest(
+            loginId = "abcd",
+            password = "1234"
+        )
+
+        every { userService.login(request) } just Runs
+
+        mockMvc.post("/login") {
+            content = objectMapper.writeValueAsString(request)
+            contentType = MediaType.APPLICATION_JSON
+        }
+            .andDo { print() }
+            .andExpect {
+                status { isOk() }
             }
     }
 }

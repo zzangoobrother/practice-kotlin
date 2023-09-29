@@ -1,5 +1,6 @@
 package com.example.practicekotlin.user.controller
 
+import com.example.practicekotlin.user.dto.LoginRequest
 import com.example.practicekotlin.user.dto.SignupRequest
 import com.example.practicekotlin.user.service.UserService
 import org.springframework.http.HttpStatus
@@ -18,5 +19,10 @@ class UserController(
     @PostMapping("/signup")
     fun signup(@Valid @RequestBody request: SignupRequest) {
         userService.signup(request)
+    }
+
+    @PostMapping("/login")
+    fun login(@Valid @RequestBody request: LoginRequest) {
+        userService.login(request)
     }
 }
