@@ -12,4 +12,8 @@ class UserRepositoryImpl(
     override fun create(user: UserEntity) {
         jpaUserRepository.save(user)
     }
+
+    override fun getUser(loginId: String): UserEntity {
+        return jpaUserRepository.findByLoginId(loginId) ?: fail()
+    }
 }

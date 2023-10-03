@@ -1,5 +1,6 @@
 package com.example.practicekotlin.user.service
 
+import com.example.practicekotlin.user.dto.LoginRequest
 import com.example.practicekotlin.user.dto.SignupRequest
 import com.example.practicekotlin.user.repository.FakeUserRepository
 import org.junit.jupiter.api.BeforeEach
@@ -19,5 +20,14 @@ internal class UserServiceTest {
     fun `회원가입`() {
         val request = SignupRequest("abcd", "1234")
         userService.signup(request)
+    }
+
+    @Test
+    fun `로그인`() {
+        val signupRequest = SignupRequest("abcd", "1234")
+        userService.signup(signupRequest)
+
+        val request = LoginRequest("abcd", "1234")
+        userService.login(request)
     }
 }

@@ -16,6 +16,10 @@ class UserService(
     }
 
     fun login(request: LoginRequest) {
-        TODO("Not yet implemented")
+        val userEntity = userRepository.getUser(request.loginId)
+
+        if (!userEntity.password.equals(request.password)) {
+            throw IllegalArgumentException("비밀번호가 틀립니다.")
+        }
     }
 }

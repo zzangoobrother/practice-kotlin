@@ -24,4 +24,11 @@ class FakeUserRepository : UserRepository {
         users.add(user)
     }
 
+    override fun getUser(loginId: String): UserEntity {
+        return users.stream()
+            .filter { u -> u.loginId.equals(loginId) }
+            .findFirst()
+            .get()
+    }
+
 }
