@@ -27,4 +27,13 @@ class MemberAcceptanceTest : AcceptanceTest() {
 
         assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value())
     }
+
+    @Test
+    fun getUsers() {
+        MemberSteps.회원가입(LOGINID, PASSWORD)
+
+        val response: ExtractableResponse<Response> = MemberSteps.`회원 다건 조회`()
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value())
+    }
 }
