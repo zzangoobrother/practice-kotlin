@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
+import org.springframework.test.web.servlet.get
 import org.springframework.test.web.servlet.post
 
 @WebMvcTest(UserController::class)
@@ -31,7 +32,7 @@ class UserControllerTest {
     fun `회원가입을 한다`() {
         val request = SignupRequest(
             loginId = "abcd",
-            password = "1234"
+            password = "1234",
         )
 
         every { userService.signup(request) } just Runs
@@ -50,7 +51,7 @@ class UserControllerTest {
     fun `회원가입 중 id를 입력하지 않으면 에러`() {
         val request = SignupRequest(
             loginId = "",
-            password = "1234"
+            password = "1234",
         )
 
         every { userService.signup(request) } just Runs
@@ -69,7 +70,7 @@ class UserControllerTest {
     fun `회원가입 중 비밀번호를 입력하지 않으면 에러`() {
         val request = SignupRequest(
             loginId = "abcd",
-            password = ""
+            password = "",
         )
 
         every { userService.signup(request) } just Runs
@@ -88,13 +89,26 @@ class UserControllerTest {
     fun `로그인을 한다`() {
         val request = LoginRequest(
             loginId = "abcd",
-            password = "1234"
+            password = "1234",
         )
 
         every { userService.login(request) } just Runs
 
         mockMvc.post("/login") {
             content = objectMapper.writeValueAsString(request)
+            contentType = MediaType.APPLICATION_JSON
+        }
+            .andDo { print() }
+            .andExpect {
+                status { isOk() }
+            }
+    }
+
+    @Test
+    fun `회원을 다건 조회한다`() {
+        every { userService.getUsers() } just Runs
+
+        mockMvc.get("/users") {
             contentType = MediaType.APPLICATION_JSON
         }
             .andDo { print() }
