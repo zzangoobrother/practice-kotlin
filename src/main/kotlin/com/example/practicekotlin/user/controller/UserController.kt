@@ -4,6 +4,7 @@ import com.example.practicekotlin.user.dto.LoginRequest
 import com.example.practicekotlin.user.dto.SignupRequest
 import com.example.practicekotlin.user.service.UserService
 import org.springframework.http.HttpStatus
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.ResponseStatus
@@ -24,5 +25,10 @@ class UserController(
     @PostMapping("/login")
     fun login(@Valid @RequestBody request: LoginRequest) {
         userService.login(request)
+    }
+
+    @GetMapping("/users")
+    fun getUsers() {
+        userService.getUsers()
     }
 }

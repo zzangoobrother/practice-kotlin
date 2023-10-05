@@ -22,4 +22,8 @@ class UserService(
             throw IllegalArgumentException("비밀번호가 틀립니다.")
         }
     }
+
+    fun getUsers() {
+        TODO("Not yet implemented")
+    }
 }
