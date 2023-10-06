@@ -16,4 +16,8 @@ class UserRepositoryImpl(
     override fun getUser(loginId: String): UserEntity {
         return jpaUserRepository.findByLoginId(loginId) ?: fail()
     }
+
+    override fun getUsers(): List<UserEntity> {
+        return jpaUserRepository.findAll()
+    }
 }

@@ -2,6 +2,7 @@ package com.example.practicekotlin.user.controller
 
 import com.example.practicekotlin.user.dto.LoginRequest
 import com.example.practicekotlin.user.dto.SignupRequest
+import com.example.practicekotlin.user.entity.UserEntity
 import com.example.practicekotlin.user.service.UserService
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.ninjasquad.springmockk.MockkBean
@@ -106,7 +107,9 @@ class UserControllerTest {
 
     @Test
     fun `회원을 다건 조회한다`() {
-        every { userService.getUsers() } just Runs
+        val users = arrayListOf<UserEntity>(UserEntity("abc", "1234"))
+
+        every { userService.getUsers() } returns users
 
         mockMvc.get("/users") {
             contentType = MediaType.APPLICATION_JSON

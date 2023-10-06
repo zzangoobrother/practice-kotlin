@@ -23,7 +23,7 @@ class UserService(
         }
     }
 
-    fun getUsers() {
-        TODO("Not yet implemented")
+    fun getUsers(): List<UserEntity> {
+        return userRepository.getUsers()
     }
 }

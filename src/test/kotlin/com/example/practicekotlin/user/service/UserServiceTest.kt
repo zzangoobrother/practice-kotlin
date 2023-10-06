@@ -30,4 +30,12 @@ internal class UserServiceTest {
         val request = LoginRequest("abcd", "1234")
         userService.login(request)
     }
+
+    @Test
+    fun `회원 다건 조회`() {
+        val signupRequest = SignupRequest("abcd", "1234")
+        userService.signup(signupRequest)
+
+        val users = userService.getUsers()
+    }
 }
