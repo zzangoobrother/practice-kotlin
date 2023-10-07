@@ -119,4 +119,19 @@ class UserControllerTest {
                 status { isOk() }
             }
     }
+
+    @Test
+    fun `회원을 단건 조회한다`() {
+        val users = arrayListOf<UserEntity>(UserEntity("abc", "1234"))
+
+        every { userService.getUsers() } returns users
+
+        mockMvc.get("/users/{userId}", 1L) {
+            contentType = MediaType.APPLICATION_JSON
+        }
+            .andDo { print() }
+            .andExpect {
+                status { isOk() }
+            }
+    }
 }
