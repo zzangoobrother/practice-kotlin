@@ -38,5 +38,12 @@ class MemberSteps : AcceptanceTestSteps() {
                 .`when`().get("/users")
                 .then().log().all().extract()
         }
+
+        fun `회원 단건 조회`(userId: Long): ExtractableResponse<Response> {
+            return given()
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .`when`().get("/users/{userId}", userId)
+                .then().log().all().extract()
+        }
     }
 }
