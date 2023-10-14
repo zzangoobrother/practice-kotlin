@@ -26,4 +26,8 @@ class UserService(
     fun getUsers(): List<UserEntity> {
         return userRepository.getUsers()
     }
+
+    fun getUsers(userId: Long): List<UserEntity> {
+        return userRepository.getUsers()
+    }
 }
