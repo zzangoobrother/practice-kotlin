@@ -14,17 +14,23 @@ import javax.validation.Valid
 
 @RestController
 class UserController(
-    private val userService: UserService
+    private val userService: UserService,
 ) {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
-    fun signup(@Valid @RequestBody request: SignupRequest) {
+    fun signup(
+        @Valid @RequestBody
+        request: SignupRequest,
+    ) {
         userService.signup(request)
     }
 
     @PostMapping("/login")
-    fun login(@Valid @RequestBody request: LoginRequest) {
+    fun login(
+        @Valid @RequestBody
+        request: LoginRequest,
+    ) {
         userService.login(request)
     }
 
@@ -36,5 +42,10 @@ class UserController(
     @GetMapping("/users/{userId}")
     fun getUsers(@PathVariable userId: Long) {
         userService.getUsers(userId)
+    }
+
+    @GetMapping("/health")
+    fun health(): Boolean {
+        return true
     }
 }
