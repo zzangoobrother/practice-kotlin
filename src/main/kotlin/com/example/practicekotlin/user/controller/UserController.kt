@@ -45,7 +45,7 @@ class UserController(
     }
 
     @GetMapping("/health")
-    fun health(): Boolean {
-        return true
+    fun health(): String {
+        return "health"
     }
 }
