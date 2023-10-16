@@ -1,16 +1,15 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:621907086828:task-definition/hanghae-test-task:1",
+    "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:621907086828:task-definition/hanghae-test-task-1:1",
     "containerDefinitions": [
         {
             "name": "hanghea-app",
             "image": "621907086828.dkr.ecr.ap-northeast-2.amazonaws.com/hanghea-test:latest",
             "cpu": 0,
-            "memory": 2048,
             "portMappings": [
                 {
-                    "name": "hanghea-app-8080-tcp",
-                    "containerPort": 8080,
-                    "hostPort": 8080,
+                    "name": "hanghea-app-80-tcp",
+                    "containerPort": 80,
+                    "hostPort": 80,
                     "protocol": "tcp",
                     "appProtocol": "http"
                 }
@@ -25,7 +24,7 @@
                 "logDriver": "awslogs",
                 "options": {
                     "awslogs-create-group": "true",
-                    "awslogs-group": "/ecs/hanghae-test-task",
+                    "awslogs-group": "/ecs/hanghae-test-task-1",
                     "awslogs-region": "ap-northeast-2",
                     "awslogs-stream-prefix": "ecs"
                 },
@@ -33,7 +32,8 @@
             }
         }
     ],
-    "family": "hanghae-test-task",
+    "family": "hanghae-test-task-1",
+    "taskRoleArn": "arn:aws:iam::621907086828:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::621907086828:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
     "revision": 1,
@@ -51,6 +51,9 @@
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
         },
         {
             "name": "ecs.capability.execution-role-ecr-pull"
@@ -79,7 +82,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2023-10-15T08:14:46.422Z",
+    "registeredAt": "2023-10-16T10:51:25.807Z",
     "registeredBy": "arn:aws:iam::621907086828:root",
     "tags": []
 }
