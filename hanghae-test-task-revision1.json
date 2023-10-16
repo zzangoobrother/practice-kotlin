@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:621907086828:task-definition/hanghae-test-task-1:1",
+    "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:621907086828:task-definition/hanghae-test-task-2:1",
     "containerDefinitions": [
         {
             "name": "hanghea-app",
@@ -7,9 +7,9 @@
             "cpu": 0,
             "portMappings": [
                 {
-                    "name": "hanghea-app-80-tcp",
-                    "containerPort": 80,
-                    "hostPort": 80,
+                    "name": "hanghea-app-8080-tcp",
+                    "containerPort": 8080,
+                    "hostPort": 8080,
                     "protocol": "tcp",
                     "appProtocol": "http"
                 }
@@ -24,7 +24,7 @@
                 "logDriver": "awslogs",
                 "options": {
                     "awslogs-create-group": "true",
-                    "awslogs-group": "/ecs/hanghae-test-task-1",
+                    "awslogs-group": "/ecs/hanghae-test-task-2",
                     "awslogs-region": "ap-northeast-2",
                     "awslogs-stream-prefix": "ecs"
                 },
@@ -32,7 +32,7 @@
             }
         }
     ],
-    "family": "hanghae-test-task-1",
+    "family": "hanghae-test-task-2",
     "taskRoleArn": "arn:aws:iam::621907086828:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::621907086828:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
@@ -79,10 +79,10 @@
     "cpu": "1024",
     "memory": "2048",
     "runtimePlatform": {
-        "cpuArchitecture": "X86_64",
+        "cpuArchitecture": "ARM64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2023-10-16T10:51:25.807Z",
+    "registeredAt": "2023-10-16T14:46:46.624Z",
     "registeredBy": "arn:aws:iam::621907086828:root",
     "tags": []
 }
