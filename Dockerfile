@@ -1,4 +1,4 @@
-FROM openjdk:17-alpine
+FROM openjdk:17-jre-slim
 EXPOSE 8080
 ARG JAR_FILE=build/libs/*.jar
 COPY ${JAR_FILE} app.jar
