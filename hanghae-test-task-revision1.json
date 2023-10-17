@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:621907086828:task-definition/hanghae-test-task-2:1",
+    "taskDefinitionArn": "arn:aws:ecs:ap-northeast-2:621907086828:task-definition/hanghae-test-task-3:1",
     "containerDefinitions": [
         {
             "name": "hanghea-app",
@@ -24,7 +24,7 @@
                 "logDriver": "awslogs",
                 "options": {
                     "awslogs-create-group": "true",
-                    "awslogs-group": "/ecs/hanghae-test-task-2",
+                    "awslogs-group": "/ecs/hanghae-test-task-3",
                     "awslogs-region": "ap-northeast-2",
                     "awslogs-stream-prefix": "ecs"
                 },
@@ -32,7 +32,7 @@
             }
         }
     ],
-    "family": "hanghae-test-task-2",
+    "family": "hanghae-test-task-3",
     "taskRoleArn": "arn:aws:iam::621907086828:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::621907086828:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
@@ -79,10 +79,10 @@
     "cpu": "1024",
     "memory": "2048",
     "runtimePlatform": {
-        "cpuArchitecture": "ARM64",
+        "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2023-10-16T14:46:46.624Z",
+    "registeredAt": "2023-10-17T13:22:46.976Z",
     "registeredBy": "arn:aws:iam::621907086828:root",
     "tags": []
 }
