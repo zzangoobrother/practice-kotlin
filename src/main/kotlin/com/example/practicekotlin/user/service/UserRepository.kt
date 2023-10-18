@@ -7,5 +7,7 @@ interface UserRepository {
 
     fun getUser(loginId: String): UserEntity
 
+    fun getUser(id: Long): UserEntity
+
     fun getUsers(): List<UserEntity>
 }

@@ -2,6 +2,7 @@ package com.example.practicekotlin.user.controller
 
 import com.example.practicekotlin.user.dto.LoginRequest
 import com.example.practicekotlin.user.dto.SignupRequest
+import com.example.practicekotlin.user.entity.UserEntity
 import com.example.practicekotlin.user.service.UserService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
@@ -35,8 +36,8 @@ class UserController(
     }
 
     @GetMapping("/users")
-    fun getUsers() {
-        userService.getUsers()
+    fun getUsers(): List<UserEntity> {
+        return userService.getUsers()
     }
 
     @GetMapping("/users/{userId}")
