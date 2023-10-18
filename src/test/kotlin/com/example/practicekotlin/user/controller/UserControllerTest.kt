@@ -36,7 +36,7 @@ class UserControllerTest {
             password = "1234",
         )
 
-        every { userService.signup(request) } just Runs
+        every { userService.signup(request) } returns 1L
 
         mockMvc.post("/signup") {
             content = objectMapper.writeValueAsString(request)
@@ -55,7 +55,7 @@ class UserControllerTest {
             password = "1234",
         )
 
-        every { userService.signup(request) } just Runs
+        every { userService.signup(request) } returns 1L
 
         mockMvc.post("/signup") {
             content = objectMapper.writeValueAsString(request)
@@ -74,7 +74,7 @@ class UserControllerTest {
             password = "",
         )
 
-        every { userService.signup(request) } just Runs
+        every { userService.signup(request) } returns 1L
 
         mockMvc.post("/signup") {
             content = objectMapper.writeValueAsString(request)
@@ -122,7 +122,7 @@ class UserControllerTest {
 
     @Test
     fun `회원을 단건 조회한다`() {
-        val users = arrayListOf<UserEntity>(UserEntity("abc", "1234"))
+        val users = UserEntity("abc", "1234")
 
         every { userService.getUsers(any()) } returns users
 

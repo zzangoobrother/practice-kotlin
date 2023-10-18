@@ -23,8 +23,8 @@ class UserController(
     fun signup(
         @Valid @RequestBody
         request: SignupRequest,
-    ) {
-        userService.signup(request)
+    ): Long {
+        return userService.signup(request)
     }
 
     @PostMapping("/login")

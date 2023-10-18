@@ -10,9 +10,9 @@ class UserService(
     private val userRepository: UserRepository
 ) {
 
-    fun signup(request: SignupRequest) {
+    fun signup(request: SignupRequest): Long {
         val user = UserEntity(request.loginId, request.password)
-        userRepository.create(user);
+        return requireNotNull(userRepository.create(user).id)
     }
 
     fun login(request: LoginRequest) {
