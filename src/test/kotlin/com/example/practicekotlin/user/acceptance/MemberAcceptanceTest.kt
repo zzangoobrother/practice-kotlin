@@ -37,12 +37,12 @@ class MemberAcceptanceTest : AcceptanceTest() {
         assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value())
     }
 
-//    @Test
-//    fun `회원 단건 조회를 한다`() {
-//        val userId = MemberSteps.회원가입(LOGINID, PASSWORD).jsonPath().getLong("userId")
-//
-//        val response: ExtractableResponse<Response> = MemberSteps.`회원 단건 조회`(userId)
-//
-//        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value())
-//    }
+    @Test
+    fun `회원 단건 조회를 한다`() {
+        val userId = MemberSteps.회원가입(LOGINID, PASSWORD).jsonPath().getLong("id")
+
+        val response: ExtractableResponse<Response> = MemberSteps.`회원 단건 조회`(userId)
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value())
+    }
 }

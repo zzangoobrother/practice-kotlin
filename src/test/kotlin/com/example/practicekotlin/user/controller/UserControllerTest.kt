@@ -36,7 +36,7 @@ class UserControllerTest {
             password = "1234",
         )
 
-        every { userService.signup(request) } returns 1L
+        every { userService.signup(request) } returns UserEntity("abc", "1234")
 
         mockMvc.post("/signup") {
             content = objectMapper.writeValueAsString(request)
@@ -55,7 +55,7 @@ class UserControllerTest {
             password = "1234",
         )
 
-        every { userService.signup(request) } returns 1L
+        every { userService.signup(request) } returns UserEntity("abc", "1234")
 
         mockMvc.post("/signup") {
             content = objectMapper.writeValueAsString(request)
@@ -74,7 +74,7 @@ class UserControllerTest {
             password = "",
         )
 
-        every { userService.signup(request) } returns 1L
+        every { userService.signup(request) } returns UserEntity("abc", "1234")
 
         mockMvc.post("/signup") {
             content = objectMapper.writeValueAsString(request)

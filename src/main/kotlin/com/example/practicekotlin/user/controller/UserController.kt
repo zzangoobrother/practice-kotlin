@@ -4,7 +4,6 @@ import com.example.practicekotlin.user.dto.LoginRequest
 import com.example.practicekotlin.user.dto.SignupRequest
 import com.example.practicekotlin.user.entity.UserEntity
 import com.example.practicekotlin.user.service.UserService
-import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
@@ -20,14 +19,14 @@ class UserController(
     private val userService: UserService,
 ) {
 
-    private val log = LoggerFactory.getLogger(javaClass)
+    private val log = LoggerFactory.getLogger(UserController::class.java)
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
     fun signup(
         @Valid @RequestBody
         request: SignupRequest,
-    ): Long {
+    ): UserEntity {
         log.trace("signup trace")
         log.debug("signup debug")
         log.info("signup info")
