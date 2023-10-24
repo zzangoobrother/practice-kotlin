@@ -3,12 +3,17 @@ package com.example.practicekotlin.user.service
 import com.example.practicekotlin.user.dto.LoginRequest
 import com.example.practicekotlin.user.dto.SignupRequest
 import com.example.practicekotlin.user.entity.UserEntity
+import org.slf4j.LoggerFactory
+import org.slf4j.MDC
+import org.springframework.scheduling.annotation.Async
 import org.springframework.stereotype.Service
 
 @Service
 class UserService(
     private val userRepository: UserRepository
 ) {
+
+    private val log = LoggerFactory.getLogger(UserService::class.java)
 
     fun signup(request: SignupRequest): UserEntity {
         val user = UserEntity(request.loginId, request.password)
@@ -29,5 +34,10 @@ class UserService(
 
     fun getUsers(userId: Long): UserEntity {
         return userRepository.getUser(userId)
+    }
+
+    @Async
+    fun asyncTest(i: Int) {
+        log.info(MDC.get("a") + ":" + i)
     }
 }

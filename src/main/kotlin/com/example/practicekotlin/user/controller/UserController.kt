@@ -61,4 +61,18 @@ class UserController(
     fun health(): String {
         return "health"
     }
+
+    @GetMapping("/async")
+    fun asyncTest(): String {
+        var i: Int = 0
+        for (i: Int in 0..120) {
+            log.info("=========")
+            MDC.put("a", i.toString())
+            log.info(MDC.get("a"))
+            userService.asyncTest(i)
+            log.info("============")
+        }
+
+        return "end"
+    }
 }
