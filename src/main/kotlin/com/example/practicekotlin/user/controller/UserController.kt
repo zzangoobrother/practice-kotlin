@@ -5,6 +5,7 @@ import com.example.practicekotlin.user.dto.SignupRequest
 import com.example.practicekotlin.user.entity.UserEntity
 import com.example.practicekotlin.user.service.UserService
 import org.slf4j.LoggerFactory
+import org.slf4j.MDC
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -27,11 +28,13 @@ class UserController(
         @Valid @RequestBody
         request: SignupRequest,
     ): UserEntity {
+        MDC.put("job", "dev")
         log.trace("signup trace")
         log.debug("signup debug")
         log.info("signup info")
         log.warn("signup warn")
         log.error("signup error")
+        MDC.clear()
 
         return userService.signup(request)
     }
