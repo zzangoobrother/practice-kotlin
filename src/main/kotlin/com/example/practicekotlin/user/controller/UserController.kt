@@ -28,14 +28,6 @@ class UserController(
         @Valid @RequestBody
         request: SignupRequest,
     ): UserEntity {
-        MDC.put("job", "dev")
-        log.trace("signup trace")
-        log.debug("signup debug")
-        log.info("signup info")
-        log.warn("signup warn")
-        log.error("signup error")
-        MDC.clear()
-
         return userService.signup(request)
     }
 
@@ -74,5 +66,16 @@ class UserController(
         }
 
         return "end"
+    }
+
+    @GetMapping("/logs")
+    fun logs() {
+        MDC.put("job", "dev")
+        log.trace("signup trace")
+        log.debug("signup debug")
+        log.info("signup info")
+        log.warn("signup warn")
+        log.error("signup error")
+        MDC.clear()
     }
 }
