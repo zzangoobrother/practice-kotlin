@@ -32,6 +32,17 @@ class MemberSteps : AcceptanceTestSteps() {
                 .then().log().all().extract()
         }
 
+        fun `비밀번호 수정`(password: String): ExtractableResponse<Response> {
+            val params: MutableMap<String, String> = mutableMapOf()
+            params.put("password", password)
+
+            return given()
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .body(params)
+                .`when`().put("/users")
+                .then().log().all().extract()
+        }
+
         fun `회원 다건 조회`(): ExtractableResponse<Response> {
             return given()
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
